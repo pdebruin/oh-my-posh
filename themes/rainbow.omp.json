@@ -57,16 +57,16 @@
           "type": "executiontime"
         },
         {
-          "background": "#e81416",
+          "background": "#e91e63",
           "background_templates": [
-            "{{ if gt .Code 0 }}#e91e63{{ end }}"
+            "{{ if gt .Code 0 }}#8b0000{{ end }}"
           ],
           "foreground": "#ffffff",
           "options": {
             "always_enabled": true
           },
           "style": "diamond",
-          "template": " \ue23a ",
+          "template": "{{ if gt .Code 0 }} \ue23a {{ .Code }} {{ else }} \ue23a {{ end }}",
           "trailing_diamond": "\ue0b4",
           "type": "status"
         }
