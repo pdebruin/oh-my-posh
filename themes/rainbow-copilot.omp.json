@@ -1,0 +1,86 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "version": 4,
+  "blocks": [
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "type": "session",
+          "style": "diamond",
+          "leading_diamond": "\ue0b6",
+          "trailing_diamond": "\ue0b0",
+          "foreground": "#ffffff",
+          "background": "#c386f1",
+          "template": " {{ .UserName }} "
+        },
+        {
+          "type": "git",
+          "style": "diamond",
+          "leading_diamond": "<parentBackground,background>\ue0b0</>",
+          "trailing_diamond": "\ue0b0",
+          "foreground": "#ffffff",
+          "background": "#3783FF",
+          "options": {
+            "fetch_status": true,
+            "fetch_upstream_icon": false
+          },
+          "template": " \uf408 {{ .RepoName }} "
+        },
+        {
+          "type": "path",
+          "style": "diamond",
+          "leading_diamond": "<parentBackground,background>\ue0b0</>",
+          "trailing_diamond": "\ue0b0",
+          "foreground": "#111111",
+          "background": "#4DE94C",
+          "options": {
+            "style": "folder"
+          },
+          "template": " \uea83 {{ .Path }} "
+        },
+        {
+          "type": "git",
+          "style": "diamond",
+          "leading_diamond": "<parentBackground,background>\ue0b0</>",
+          "trailing_diamond": "\ue0b4",
+          "foreground": "#111111",
+          "background": "#FFEE00",
+          "options": {
+            "fetch_status": true,
+            "fetch_upstream_icon": false
+          },
+          "template": " {{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} \uf044 {{ nospace .Working.String }}{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }} "
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "right",
+      "segments": [
+        {
+          "type": "copilot_cli",
+          "style": "diamond",
+          "leading_diamond": "\ue0b6",
+          "trailing_diamond": "\ue0b0",
+          "foreground": "#ffffff",
+          "background": "#FF8C00",
+          "template": " I/O: {{ .ContextWindow.LastCallInputTokens }}+{{ .ContextWindow.LastCallOutputTokens }} "
+        },
+        {
+          "type": "copilot_cli",
+          "style": "diamond",
+          "leading_diamond": "<parentBackground,background>\ue0b0</>",
+          "trailing_diamond": "\ue0b4",
+          "foreground": "#ffffff",
+          "background": "#e91e63",
+          "background_templates": [
+            "{{ if gt (int .TokenUsagePercent) 80 }}#8b0000{{ end }}"
+          ],
+          "template": " {{ .TokenGauge }} "
+        }
+      ]
+    }
+  ]
+}
